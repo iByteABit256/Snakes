@@ -1,6 +1,6 @@
 const io = require('socket.io')({
     cors: {
-        origin: "http://localhost:8080",
+        origin: "*",
         methods: ["GET", "POST"]
     }
 });
@@ -20,7 +20,12 @@ io.on('connection', client => {
     function handleJoinGame(gameCode){
         const room = io.sockets.adapter.rooms.get(gameCode);
 
-        const numClients = room.size;
+        let numClients;
+        if(!room){
+            numClients = 0;    
+        }else{
+            numClients = room.size;
+        }
 
         if(numClients === 0){
             client.emit('unknownGame');

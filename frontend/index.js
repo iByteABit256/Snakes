@@ -106,6 +106,8 @@ function handleGameOver(data){
 
     if(data.winner === playerNumber){
         alert("You win!");
+    }else if(data.winner === -1){
+        alert("Tie!");
     }else{
         alert("You lose!");
     }
