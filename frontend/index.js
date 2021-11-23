@@ -2,7 +2,7 @@ const BG_COLOUR = "#231f20"
 const FOOD_COLOUR = "#ea3535"
 const SNAKE_COLOURS = {};
 
-const socket = io('http://localhost:3000');
+const socket = io('https://peaceful-hamlet-35803.herokuapp.com/');
 
 socket.on('init', handleInit);
 socket.on('gameState', handleGameState);
