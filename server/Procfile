@@ -1,1 +1,1 @@
-web: npx nodemon server.js
+web: node server.js
