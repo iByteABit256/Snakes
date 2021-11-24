@@ -88,11 +88,11 @@ function gameLoop(state){
             return -1;
         }
 
-        for(let segment of playerOne.snake){
-            if(segment.x === playerOne.pos.x && segment.y === playerOne.pos.y){
-                return 2;
-            }
-        }
+        //for(let segment of playerOne.snake){
+        //    if(segment.x === playerOne.pos.x && segment.y === playerOne.pos.y){
+        //        return 2;
+        //    }
+        //}
 
         for(let segment of playerTwo.snake){
             if(segment.x === playerOne.pos.x && segment.y === playerOne.pos.y){
@@ -112,11 +112,11 @@ function gameLoop(state){
             }
         }
 
-        for(let segment of playerTwo.snake){
-            if(segment.x === playerTwo.pos.x && segment.y === playerTwo.pos.y){
-                return 1;
-            }
-        }
+        //for(let segment of playerTwo.snake){
+        //    if(segment.x === playerTwo.pos.x && segment.y === playerTwo.pos.y){
+        //        return 1;
+        //    }
+        //}
     }
 
     playerOne.snake.push({ ...playerOne.pos });
