@@ -22,7 +22,7 @@ io.on('connection', client => {
 
         let numClients;
         if(!room){
-            numClients = 0;    
+            numClients = 0;
         }else{
             numClients = room.size;
         }
