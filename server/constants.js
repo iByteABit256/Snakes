@@ -1,4 +1,4 @@
-const FPS = 1;
+const FPS = 5;
 const GRID_SIZE = 20;
 
 module.exports = {
