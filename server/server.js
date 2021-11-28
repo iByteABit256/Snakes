@@ -11,11 +11,20 @@ const { FPS } = require('./constants.js')
 
 const state = {};
 const clientRooms = {};
+const ready = {};
 
 io.on('connection', client => {
     client.on('keydown', handleKeyDown);
     client.on('newGame', handleNewGame);
     client.on('joinGame', handleJoinGame);
+    client.on('restartGame', handleRestartGame);
+
+
+    function handleRestartGame(){
+        roomName = clientRooms[client.id];
+
+        waitOpponent(roomName);
+    }
 
     function handleJoinGame(gameCode){
         const room = io.sockets.adapter.rooms.get(gameCode);
@@ -80,6 +89,14 @@ io.on('connection', client => {
     }
 });
 
+function waitOpponent(roomName){
+    state[roomName] = initGameState();
+
+    if(++ready[roomName] == 2){
+        startGameInterval(roomName);
+    }
+}
+
 function startGameInterval(roomName){
     const intervalId = setInterval(() => {
         const winner = gameLoop(state[roomName]);
@@ -90,6 +107,7 @@ function startGameInterval(roomName){
             emitGameOver(roomName, winner); 
             state[roomName] = null;
             clearInterval(intervalId);
+            ready[roomName] = 0;
         }
 
     }, 1000/FPS)

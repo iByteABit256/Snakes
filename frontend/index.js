@@ -15,12 +15,20 @@ const gameScreen = document.getElementById('gameScreen');
 const initialScreen = document.getElementById('initialScreen');
 const newGameButton = document.getElementById('newGameButton');
 const joinGameButton = document.getElementById('joinGameButton');
+const restartGameButton = document.getElementById('restartGameButton');
 const gameCodeInput = document.getElementById('gameCodeInput');
 const gameCodeDisplay = document.getElementById('gameCodeDisplay');
 
 newGameButton.addEventListener('click', newGame);
 joinGameButton.addEventListener('click', joinGame);
+restartGameButton.addEventListener('click', restartGame);
 
+
+function restartGame(){
+    gameActive = true;
+    socket.emit('restartGame');
+    restartGameButton.style.display = "none";
+}
 
 function newGame(){
     socket.emit('newGame');
@@ -112,6 +120,8 @@ function handleGameOver(data){
         alert("You lose!");
     }
     gameActive = false;
+
+    restartGameButton.style.display = "block";
 }
 
 function handleGameCode(gamecode){

@@ -21,10 +21,13 @@
                     >
                       Create New Game
                     </button>
+
                     <div>OR</div>
+
                     <div class="form-group">
                       <input type="text" placeholder="Enter Game Code" id="gameCodeInput"/>
                     </div>
+
                     <button
                       type="submit"
                       class="btn btn-success"
@@ -32,15 +35,26 @@
                     >
                       Join Game
                     </button>
+
                 </div>
             </div>
 
-            <div id="gameScreen" class="h-100">
+            <div id="gameScreen" class="h-100" style="display: none;">
                 <div class="d-flex flex-column align-items-center justify-content-center h-100">
 
                     <h1>Your game code is: <span id="gameCodeDisplay"></span></h1>
 
-                    <canvas id="canvas"></canvas>
+                    <canvas id="canvas" style="margin-bottom: 1cm;"></canvas>
+
+                    <button
+                      type="submit"
+                      class="btn btn-success"
+                      id="restartGameButton"
+                      style="display: none;"
+                    >
+                      Play Again 
+                    </button>
+
                 </div>
             </div>
 
